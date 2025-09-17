@@ -75,7 +75,7 @@ module.exports = function (app, name, middleware, controllers) {
 };
 
 
-function apiRoutes(router, name, middleware, controllers) {
+function apiRoutes({router, name, middleware, controllers}) {
 	router.get(`/api/${name}/config`, middleware.ensureLoggedIn, helpers.tryRoute(controllers.admin.getConfig));
 	router.get(`/api/${name}/users/csv`, middleware.ensureLoggedIn, helpers.tryRoute(controllers.admin.users.getCSV));
 	router.get(`/api/${name}/groups/:groupname/csv`, middleware.ensureLoggedIn, helpers.tryRoute(controllers.admin.groups.getCSV));
