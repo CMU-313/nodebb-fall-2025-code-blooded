@@ -22,6 +22,9 @@ const notifications = require('../notifications');
 
 const postsAPI = module.exports;
 
+// Load endorsement functionality
+require('./endorsements');
+
 postsAPI.get = async function (caller, data) {
 	const [userPrivileges, post, voted] = await Promise.all([
 		privileges.posts.get([data.pid], caller.uid),

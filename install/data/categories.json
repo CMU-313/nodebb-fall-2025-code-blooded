@@ -28,8 +28,8 @@
     },
     {
         "name": "Comments & Feedback",
-        "description": "Got a question? Ask away!",
-        "descriptionParsed": "<p>Got a question? Ask away!</p>\n",
+        "description": "Got a question? Ask away!!!!!",
+        "descriptionParsed": "<p>Got a question? Ask away!!!!!</p>\n",
         "bgColor": "#e95c5a",
         "color": "#ffffff",
         "icon" : "fa-question",

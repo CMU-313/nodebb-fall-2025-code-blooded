@@ -5,6 +5,7 @@ define('forum/topic', [
 	'forum/infinitescroll',
 	'forum/topic/threadTools',
 	'forum/topic/postTools',
+	'forum/topic/endorsements',
 	'forum/topic/events',
 	'forum/topic/posts',
 	'navigator',
@@ -18,7 +19,7 @@ define('forum/topic', [
 	'bootbox',
 	'clipboard',
 ], function (
-	infinitescroll, threadTools, postTools,
+	infinitescroll, threadTools, postTools, endorsements,
 	events, posts, navigator, sort, quickreply,
 	components, storage, hooks, api, alerts,
 	bootbox, clipboard
@@ -53,6 +54,7 @@ define('forum/topic', [
 
 		postTools.init(tid);
 		threadTools.init(tid, $('.topic'));
+		endorsements.init();
 		events.init();
 
 		sort.handleSort('topicPostSort', 'topic/' + ajaxify.data.slug);

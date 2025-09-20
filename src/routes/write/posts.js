@@ -34,6 +34,11 @@ module.exports = function () {
 	setupApiRoute(router, 'put', '/:pid/bookmark', middlewares, controllers.write.posts.bookmark);
 	setupApiRoute(router, 'delete', '/:pid/bookmark', middlewares, controllers.write.posts.unbookmark);
 
+	// Endorsement routes
+	setupApiRoute(router, 'post', '/:pid/endorse', middlewares, controllers.write.endorsements.endorse);
+	setupApiRoute(router, 'delete', '/:pid/endorse', middlewares, controllers.write.endorsements.unendorse);
+	setupApiRoute(router, 'get', '/:pid/endorsement', [middleware.assert.post], controllers.write.endorsements.getEndorsement);
+
 	setupApiRoute(router, 'get', '/:pid/diffs', [middleware.assert.post], controllers.write.posts.getDiffs);
 	setupApiRoute(router, 'get', '/:pid/diffs/:since', [middleware.assert.post], controllers.write.posts.loadDiff);
 	setupApiRoute(router, 'put', '/:pid/diffs/:since', middlewares, controllers.write.posts.restoreDiff);

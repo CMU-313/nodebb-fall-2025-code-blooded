@@ -1,0 +1,62 @@
+// Endorsement styling
+.endorsed-post {
+    border-left: 4px solid #28a745 !important;
+    background-color: rgba(40, 167, 69, 0.05);
+    
+    .post-header {
+        background-color: rgba(40, 167, 69, 0.1);
+        border-radius: 0.25rem 0.25rem 0 0;
+        padding: 0.5rem;
+        margin: -0.5rem -0.5rem 0.5rem -0.5rem;
+    }
+}
+
+.endorsed-indicator {
+    font-size: 0.75rem;
+    font-weight: 600;
+    
+    i {
+        margin-right: 0.25rem;
+    }
+}
+
+[component="post/endorse"] {
+    &:hover {
+        background-color: rgba(40, 167, 69, 0.1);
+        color: #28a745 !important;
+    }
+}
+
+[component="post/unendorse"] {
+    color: #28a745 !important;
+    
+    &:hover {
+        background-color: rgba(40, 167, 69, 0.1);
+    }
+}
+
+// Make endorsed posts more prominent in topic lists
+.topic-list .endorsed-post {
+    border: 2px solid #28a745;
+    border-radius: 0.5rem;
+    margin-bottom: 1rem;
+    
+    .topic-title {
+        color: #28a745;
+        font-weight: 600;
+    }
+}
+
+// Endorsed post badge in topic list
+.topic-endorsed-badge {
+    background-color: #28a745;
+    color: white;
+    font-size: 0.75rem;
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.25rem;
+    margin-left: 0.5rem;
+    
+    i {
+        margin-right: 0.25rem;
+    }
+}
