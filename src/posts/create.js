@@ -33,6 +33,9 @@ module.exports = function (Posts) {
 		if (data.toPid) {
 			postData.toPid = data.toPid;
 		}
+		if (data.anonymous) {
+			postData.anonymous = data.anonymous;
+		}
 		if (data.ip && meta.config.trackIpPerPost) {
 			postData.ip = data.ip;
 		}

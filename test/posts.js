@@ -1268,6 +1268,25 @@ describe('Posts\'', async () => {
 		files = await file.walk(path.resolve(__dirname, './posts'));
 	});
 
+	it('should create anonymous posts correctly', async () => {
+		const anonymousPostData = await posts.create({
+			uid: voteeUid,
+			tid: topicData.tid,
+			content: 'This is an anonymous post',
+			anonymous: true,
+		});
+
+		assert(anonymousPostData);
+		assert.strictEqual(anonymousPostData.anonymous, true);
+
+		// Test that the post summary shows Anonymous as the user
+		const postSummary = await posts.getPostSummaryByPids([anonymousPostData.pid], 1);
+		assert(postSummary && postSummary.length > 0);
+		assert.strictEqual(postSummary[0].user.username, 'Anonymous');
+		assert.strictEqual(postSummary[0].user.displayname, 'Anonymous');
+		assert.strictEqual(postSummary[0].user.uid, 0);
+	});
+
 	it('subfolder tests', () => {
 		files.forEach((filePath) => {
 			require(filePath);
