@@ -136,6 +136,8 @@ define('forum/category/tools', [
 		socket.on('event:topic_unlocked', setLockedState);
 		socket.on('event:topic_pinned', setPinnedState);
 		socket.on('event:topic_unpinned', setPinnedState);
+		socket.on('event:topic_endorsed', setEndorsedState);
+		socket.on('event:topic_unendorsed', setEndorsedState);
 		socket.on('event:topic_moved', onTopicMoved);
 	};
 
@@ -182,6 +184,8 @@ define('forum/category/tools', [
 		socket.removeListener('event:topic_unlocked', setLockedState);
 		socket.removeListener('event:topic_pinned', setPinnedState);
 		socket.removeListener('event:topic_unpinned', setPinnedState);
+		socket.removeListener('event:topic_endorsed', setEndorsedState);
+		socket.removeListener('event:topic_unendorsed', setEndorsedState);
 		socket.removeListener('event:topic_moved', onTopicMoved);
 	};
 
@@ -276,6 +280,12 @@ define('forum/category/tools', [
 		topic.toggleClass('pinned', data.isPinned);
 		topic.find('[component="topic/pinned"]').toggleClass('hidden', !data.isPinned);
 		ajaxify.refresh();
+	}
+
+	function setEndorsedState(data) {
+		const topic = getTopicEl(data.tid);
+		topic.toggleClass('endorsed', data.endorsed);
+		topic.find('[component="topic/endorsed"]').toggleClass('hidden', !data.endorsed);
 	}
 
 	function setLockedState(data) {
