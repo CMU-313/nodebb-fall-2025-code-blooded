@@ -1,0 +1,1 @@
+module.exports = require('../../../../../node_modules/nodebb-plugin-web-push/public/lib/settings.js');
