@@ -54,11 +54,11 @@ module.exports = function (Posts) {
 			if (post.anonymous) {
 				post.user = {
 					uid: 0,
-					username: 'Anonymous',
+					username: 'Anonymous User',
 					userslug: '',
-					picture: '',
+					picture: 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMjAiIGN5PSIyMCIgcj0iMjAiIGZpbGw9IiM2Yjc0ODQiLz4KPHR5cGUgZm9udC1mYW1pbHk9IkFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjI0IiBmaWxsPSJ3aGl0ZSIgZG9taW5hbnQtYmFzZWxpbmU9Im1pZGRsZSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgeD0iMjAiIHk9IjIyIj4/PC90ZXh0Pgo8L3N2Zz4K',
 					status: 'offline',
-					displayname: 'Anonymous'
+					displayname: 'Anonymous User'
 				};
 			} else {
 				post.user = uidToUser[post.uid];

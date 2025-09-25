@@ -109,12 +109,14 @@ if (document.readyState === 'loading') {
 			'search',
 			'forum/header',
 			'hooks',
-		], function (taskbar, helpers, pagination, messages, search, header, hooks) {
+			'anonymous',
+		], function (taskbar, helpers, pagination, messages, search, header, hooks, anonymous) {
 			header.prepareDOM();
 			taskbar.init();
 			helpers.register();
 			pagination.init();
 			search.init();
+			anonymous.init();
 			overrides.overrideTimeago();
 			hooks.fire('action:app.load');
 			messages.show();
