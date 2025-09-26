@@ -36,13 +36,10 @@
 						<span component="topic/pinned" class="badge badge border border-gray-300 text-body {{{ if (scheduled || !pinned) }}}hidden{{{ end }}}">
 							<i class="fa fa-thumb-tack"></i> {{{ if !pinExpiry }}}[[topic:pinned]]{{{ else }}}[[topic:pinned-with-expiry, {isoTimeToLocaleString(./pinExpiryISO, config.userLang)}]]{{{ end }}}
 						</span>
-
 						<span component="topic/endorsed"
 							class="badge bg-warning text-dark {{{ if !endorsed }}}hidden{{{ end }}}">
 						<i class="fa fa-check-circle"></i> [[topic:endorsed]]
 						</span>
-
-
 						<span component="topic/locked" class="badge badge border border-gray-300 text-body {{{ if !locked }}}hidden{{{ end }}}">
 							<i class="fa fa-lock"></i> [[topic:locked]]
 						</span>
