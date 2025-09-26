@@ -43,7 +43,8 @@
 					
 					<span component="topic/endorsed"
 						class="badge bg-warning text-dark {{{ if !./endorsed }}}hidden{{{ end }}}">
-					<i class="fa fa-check-circle"></i> [[topic:endorsed]]
+					<i class="fa fa-check-circle"></i> 
+					<span>[[topic:endorsed]]</span>
 					</span>
 
 					<span component="topic/locked" class="badge border border-gray-300 text-body {{{ if !./locked }}}hidden{{{ end }}}">
