@@ -251,7 +251,10 @@ module.exports = function (Topics) {
 		]);
 
 		// Returned data is a superset of post summary data
-		postData.user = userInfo;
+		// Don't override user data if the post is anonymous
+		if (!postData.anonymous) {
+			postData.user = userInfo;
+		}
 		postData.index = postData.topic.postcount - 1;
 		postData.bookmarked = false;
 		postData.display_edit_tools = true;
