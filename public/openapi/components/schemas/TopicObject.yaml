@@ -234,6 +234,9 @@ TopicObjectSlim:
           type: number
           description: Whether or not this particular topic is pinned to the top of the
             category
+        endorsed:
+          type: number
+          description: Whether or not this particular topic has been endorsed by an admin or moderator
         timestamp:
           type: number
         timestampISO:
