@@ -15,6 +15,14 @@
 	<a component="topic/unpin" href="#" class="dropdown-item rounded-1 d-flex align-items-center gap-2 {{{ if !pinned }}}hidden{{{ end }}}" role="menuitem"><i class="fa fa-fw fa-thumb-tack fa-rotate-90 text-secondary"></i> [[topic:thread-tools.unpin]]</a>
 </li>
 
+<li {{{ if endorsed }}}hidden{{{ end }}}>
+	<a component="topic/endorse" href="#" class="dropdown-item rounded-1 d-flex align-items-center gap-2 {{{ if endorsed }}}hidden{{{ end }}}" role="menuitem"><i class="fa fa-fw fa-check-circle text-secondary"></i> [[topic:thread-tools.endorse]]</a>
+</li>
+
+<li {{{ if !endorsed }}}hidden{{{ end }}}>
+	<a component="topic/unendorse" href="#" class="dropdown-item rounded-1 d-flex align-items-center gap-2 {{{ if !endorsed }}}hidden{{{ end }}}" role="menuitem"><i class="fa fa-fw fa-times-circle text-secondary"></i> [[topic:thread-tools.unendorse]]</a>
+</li>
+
 <li>
 	<a component="topic/move" href="#" class="dropdown-item rounded-1 d-flex align-items-center gap-2" role="menuitem"><i class="fa fa-fw fa-arrows text-secondary"></i> [[topic:thread-tools.move]]</a>
 </li>

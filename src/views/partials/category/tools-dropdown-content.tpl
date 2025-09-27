@@ -21,6 +21,17 @@
 	</li>
 
 	<li>
+		<a component="topic/endorse" href="#" class="dropdown-item rounded-1 d-flex align-items-center gap-2" role="menuitem">
+			<i class="fa fa-fw fa-check-circle text-secondary"></i> [[topic:thread-tools.endorse]]
+		</a>
+	</li>
+	<li>
+		<a component="topic/unendorse" href="#" class="hidden dropdown-item rounded-1" role="menuitem">
+			<i class="fa fa-fw fa-times-circle text-secondary"></i> [[topic:thread-tools.unendorse]]
+		</a>
+	</li>
+
+	<li>
 		<a component="topic/lock" href="#" class="dropdown-item rounded-1 d-flex align-items-center gap-2" role="menuitem">
 			<i class="fa fa-fw fa-lock text-secondary"></i> [[topic:thread-tools.lock]]
 		</a>
