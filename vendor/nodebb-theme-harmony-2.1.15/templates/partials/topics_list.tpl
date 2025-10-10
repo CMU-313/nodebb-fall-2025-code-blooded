@@ -40,9 +40,11 @@
 						<i class="fa fa-thumb-tack"></i>
 						<span>{{{ if !./pinExpiry }}}[[topic:pinned]]{{{ else }}}[[topic:pinned-with-expiry, {isoTimeToLocaleString(./pinExpiryISO, config.userLang)}]]{{{ end }}}</span>
 					</span>
-					<span component="topic/endorsed" class="badge bg-warning text-dark {{{ if !./endorsed }}}hidden{{{ end }}}">
-						<i class="fa fa-check-circle"></i>
-						<span>[[topic:endorsed]]</span>
+					<span component="topic/endorsed"
+						class="badge {{{ if ./endorsed }}}text-light{{{ end }}} {{{ if !./endorsed }}}hidden{{{ end }}}"
+						style="{{{ if ./endorsed }}}background-color: #ff9933; border-color: #e68a00;{{{ end }}}">
+					<i class="fa fa-check-circle"></i>
+					<span>[[topic:endorsed]]</span>
 					</span>
 					<span component="topic/locked" class="badge border border-gray-300 text-body {{{ if !./locked }}}hidden{{{ end }}}">
 						<i class="fa fa-lock"></i>
