@@ -51,14 +51,13 @@ users won't be able to see their username and will see
 4. Confirm post editing works for the original author but not for other users
 
 **Automated Tests:**
-Located at `/test/topics/anonymous-posting.js`, the test suite includes 21 test cases covering:
+Located at `/test/topics/anonymous-posting.js`, the test suite includes 18 test cases covering:
 
 - **Post Creation & Display**: Anonymous flag storage and "Anonymous User" display
 - **Functionality**: Voting, bookmarking, replying, and editing capabilities  
 - **Moderation**: Admin access to original poster info and moderation tools
 - **API Integration**: Anonymous posting through REST API endpoints
-- **Edge Cases**: Post queues, mixed content, and post management scenarios
-- **Search & Filtering**: Anonymous posts in search results and topic listings
+- **Edge Cases**: Post queues and mixed content scenarios
 
 Run tests with `npm run test -- test/topics/anonymous-posting.js` to verify functionality. The comprehensive test suite ensures anonymous posting works seamlessly with all existing forum features while maintaining privacy and moderation capabilities.
 
