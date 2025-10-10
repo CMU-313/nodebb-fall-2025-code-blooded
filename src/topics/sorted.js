@@ -80,6 +80,8 @@ module.exports = function (Topics) {
 			posts: 'topics:posts',
 			votes: 'topics:votes',
 			views: 'topics:views',
+			admin_replied: 'topics:recent',
+			'admin-replied': 'topics:recent',
 		};
 		if (map.hasOwnProperty(sort)) {
 			return map[sort];
@@ -155,7 +157,7 @@ module.exports = function (Topics) {
 		const sets = [];
 		const pinnedSets = [];
 		params.cids.forEach((cid) => {
-			if (params.sort === 'recent' || params.sort === 'old') {
+			if (params.sort === 'recent' || params.sort === 'old' || params.sort === 'admin_replied' || params.sort === 'admin-replied') {
 				sets.push(`cid:${cid}:tids`);
 			} else {
 				sets.push(`cid:${cid}:tids${params.sort ? `:${params.sort}` : ''}`);
@@ -172,7 +174,7 @@ module.exports = function (Topics) {
 	}
 
 	async function sortTids(tids, params) {
-		if (params.term === 'alltime' && !params.cids && !params.tags.length && params.filter !== 'watched' && !params.floatPinned) {
+		if (params.term === 'alltime' && !params.cids && !params.tags.length && params.filter !== 'watched' && !params.floatPinned && params.sort !== 'admin_replied') {
 			return tids;
 		}
 
@@ -192,6 +194,8 @@ module.exports = function (Topics) {
 				posts: sortPopular,
 				votes: sortVotes,
 				views: sortViews,
+				admin_replied: sortAdminReplied,
+				'admin-replied': sortAdminReplied,
 			},
 		});
 
@@ -199,13 +203,25 @@ module.exports = function (Topics) {
 		const sortFn = sortMap.hasOwnProperty(params.sort) && sortMap[params.sort] ?
 			sortMap[params.sort] : sortRecent;
 
+		// If sorting by admin_replied, compute the admin reply timestamps map first
+		if (params.sort === 'admin_replied') {
+			try {
+				const map = await computeAdminReplyMap(topicData);
+				sortAdminReplied._map = map;
+			} catch (e) {
+				sortAdminReplied._map = {};
+			}
+		}
+
 		if (params.floatPinned) {
 			floatPinned(topicData, sortFn);
 		} else {
 			topicData.sort(sortFn);
 		}
 
-		return topicData.map(topic => topic && topic.tid);
+		const result = topicData.map(topic => topic && topic.tid);
+
+		return result;
 	}
 
 	function floatPinned(topicData, sortFn) {
@@ -240,6 +256,79 @@ module.exports = function (Topics) {
 
 	function sortViews(a, b) {
 		return b.viewcount - a.viewcount;
+	}
+
+	function sortAdminReplied(a, b) {
+		const map = sortAdminReplied._map || {};
+		const ta = map[a.tid] || 0;
+		const tb = map[b.tid] || 0;
+		if (ta !== tb) {
+			return tb - ta;
+		}
+		// Fall back to recently replied if equal
+		return sortRecent(a, b);
+	}
+
+	// Compute a map of tid -> latest admin reply timestamp for the provided topicData.
+	// This helper batches DB requests and user admin checks.
+	async function computeAdminReplyMap(topicData) {
+		const tids = topicData.map(t => t && t.tid).filter(Boolean);
+		if (!tids.length) {
+			return {};
+		}
+
+		// For each tid, fetch the latest N pids (we'll check up to 50 latest replies per topic)
+		const pidPromises = tids.map(tid => db.getSortedSetRevRange(`tid:${tid}:posts`, 0, 49));
+		const pidArrays = await Promise.all(pidPromises);
+		const tidToPids = {};
+		const allPids = [];
+		pidArrays.forEach((arr, idx) => {
+			const tid = tids[idx];
+			tidToPids[tid] = arr || [];
+			allPids.push(...(arr || []));
+		});
+
+		const uniquePids = Array.from(new Set(allPids.filter(Boolean).map(String)));
+		if (!uniquePids.length) {
+			return {};
+		}
+
+		const postsData = await require('../posts').getPostsFields(uniquePids, ['pid', 'uid', 'timestamp']);
+		// Map pid -> post
+		const pidMap = {};
+		postsData.forEach((p) => {
+			if (p && p.pid) {
+				pidMap[String(p.pid)] = p;
+			}
+		});
+
+		// Check admin status for unique uids
+		const uids = Array.from(new Set(postsData.map(p => p && p.uid).filter(Boolean)));
+		const uidIsAdmin = {};
+		await Promise.all(uids.map(async (uid) => {
+			try {
+				uidIsAdmin[String(uid)] = await require('../privileges').users.isAdministrator(uid);
+			} catch (e) {
+				uidIsAdmin[String(uid)] = false;
+			}
+		}));
+
+		const result = {};
+		for (const tid of tids) {
+			let maxTs = 0;
+			const pids = tidToPids[tid] || [];
+			for (const pid of pids) {
+				const post = pidMap[String(pid)];
+				if (post && post.uid && uidIsAdmin[String(post.uid)]) {
+					const ts = parseInt(post.timestamp, 10) || 0;
+					if (ts > maxTs) {
+						maxTs = ts;
+					}
+				}
+			}
+			result[tid] = maxTs;
+		}
+		return result;
 	}
 
 	async function filterTids(tids, params) {

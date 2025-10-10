@@ -14,6 +14,22 @@ const utils = require('../utils');
 module.exports = function (Categories) {
 	Categories.getCategoryTopics = async function (data) {
 		let results = await plugins.hooks.fire('filter:category.topics.prepare', data);
+
+		// For admin_replied sort, use Topics.getSortedTopics which has the custom sorting logic
+		if (data.sort === 'admin_replied' || data.sort === 'admin-replied') {
+			const sortedResult = await topics.getSortedTopics({
+				cids: [data.cid],
+				uid: data.uid,
+				start: data.start || 0,
+				stop: data.stop || 19,
+				sort: data.sort,
+				tag: data.tag,
+				targetUid: data.targetUid,
+				query: data.query || {},
+			});
+			return { topics: sortedResult.topics, nextStart: sortedResult.nextStart };
+		}
+
 		const tids = await Categories.getTopicIds(results);
 		let topicsData = await topics.getTopicsByTids(tids, data.uid);
 		topicsData = await user.blocks.filter(data.uid, topicsData);
@@ -98,6 +114,8 @@ module.exports = function (Categories) {
 			most_posts: `cid:${cid}:tids:posts`,
 			most_votes: `cid:${cid}:tids:votes`,
 			most_views: `cid:${cid}:tids:views`,
+			admin_replied: `cid:${cid}:tids`,
+			'admin-replied': `cid:${cid}:tids`,
 		};
 
 		const mainSet = sortToSet.hasOwnProperty(sort) ? sortToSet[sort] : `cid:${cid}:tids`;
