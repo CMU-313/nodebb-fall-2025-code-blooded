@@ -22,6 +22,14 @@ When a topic is endorsed, the system:
 4. Fires a plugin hook (`action:topic.endorse`) for extensibility
 (When a topic is unendorsed, the system reverses this process, setting the field to `0` and logging an unendorsement event)
 
-**Manual Testing**: Run on localhost, then create topics and verify that administrators and moderators can toggle endorsement on and off (with appropriate UI changes), while regular users cannot.
+**Manual Testing**: 
+
+Run the instance locally.
+
+Create multiple topics under different user roles (admin, moderator, regular user).
+
+Verify that only administrators and moderators can toggle the endorsement state on and off.
+
+Confirm that the UI updates dynamically with the endorsement banner and that regular users cannot access endorsement controls.
 
 **Automated Tests**: Located at `/test/topics/endorse-posts.js`, the test suite includes ~18 focused test cases covering endorsing/unendorsing topics and logging events, retrieving endorsed/unendorsed field values, etc. Run tests with `npm run test -- test/topics/endorse-posts.js` to verify functionality. The tests ensure that permissions are set up correctly and that API endpoints are correctly implemented, as well as that events are logged correctly in the history.
