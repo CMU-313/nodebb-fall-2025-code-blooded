@@ -1,0 +1,35 @@
+name: StandardJS lint
+
+on:
+  push:
+    branches:
+      - main
+      - master
+  pull_request:
+    branches:
+      - main
+      - master
+
+jobs:
+  standard:
+    name: Run StandardJS
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Use Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install StandardJS for the job
+        run: |
+          npm install --no-save standard
+
+      - name: Show StandardJS version
+        run: npx standard --version
+
+      - name: Run StandardJS on src/topics/create.js
+        run: |
+          npx standard "src/topics/create.js"
