@@ -23,14 +23,13 @@ jobs:
         with:
           node-version: "20"
 
-      - name: Install dependencies
+      - name: Install StandardJS for the job
         run: |
-          npm ci --prefer-offline --no-audit --progress=false
+          npm install --no-save standard
 
       - name: Show StandardJS version
         run: npx standard --version
 
       - name: Run StandardJS on src/topics/create.js
         run: |
-          # Run StandardJS only on a single file to limit CI scope
           npx standard "src/topics/create.js"
