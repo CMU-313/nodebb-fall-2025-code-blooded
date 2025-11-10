@@ -50,8 +50,22 @@ module.exports = function (Posts) {
 			// toPid is nullable so it is casted separately
 			post.toPid = utils.isNumber(post.toPid) ? parseInt(post.toPid, 10) : post.toPid;
 
-			post.user = uidToUser[post.uid];
-			Posts.overrideGuestHandle(post, post.handle);
+			// Handle anonymous posts
+			if (post.anonymous) {
+				post.user = {
+					uid: 0,
+					username: 'Anonymous User',
+					userslug: '',
+					picture: '',
+					'icon:text': '?',
+					'icon:bgColor': '#aaa',
+					status: 'offline',
+					displayname: 'Anonymous User',
+				};
+			} else {
+				post.user = uidToUser[post.uid];
+				Posts.overrideGuestHandle(post, post.handle);
+			}
 			post.handle = undefined;
 			post.topic = tidToTopic[post.tid];
 			post.category = post.topic && cidToCategory[post.topic.cid];

@@ -11,6 +11,13 @@
 				<i class="flex-shrink-0 fa fa-fw text-secondary"></i>
 			</a>
 		</li>
+			<li>
+				<a class="dropdown-item rounded-1 d-flex align-items-center gap-2" href="#" data-sort="admin_replied" role="menuitem">
+					<span class="flex-grow-1">[[topic:admin-replied]]</span>
+					<i class="flex-shrink-0 fa fa-fw text-secondary"></i>
+				</a>
+			</li>
+		</li>
 		<li>
 			<a class="dropdown-item rounded-1 d-flex align-items-center gap-2" href="#" data-sort="recently_created" role="menuitem">
 				<span class="flex-grow-1">[[topic:recently-created]]</span>

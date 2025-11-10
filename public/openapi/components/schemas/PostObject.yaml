@@ -58,7 +58,8 @@ PostObject:
           description: This is either username or fullname depending on forum and user settings
         userslug:
           type: string
-          description: An URL-safe variant of the username (i.e. lower-cased, spaces
+          description:
+            An URL-safe variant of the username (i.e. lower-cased, spaces
             removed, etc.)
         picture:
           type: string
@@ -67,12 +68,14 @@ PostObject:
           type: string
         icon:text:
           type: string
-          description: A single-letter representation of a username. This is used in the
+          description:
+            A single-letter representation of a username. This is used in the
             auto-generated icon given to users without
             an avatar
         icon:bgColor:
           type: string
-          description: A six-character hexadecimal colour code assigned to the user. This
+          description:
+            A six-character hexadecimal colour code assigned to the user. This
             value is used in conjunction with
             `icon:text` for the user's auto-generated
             icon
@@ -106,7 +109,8 @@ PostObject:
           type: number
         mainPid:
           type: number
-          description: The post id of the first post in this topic (also called the
+          description:
+            The post id of the first post in this topic (also called the
             "original post")
         teaserPid:
           type: number
@@ -144,7 +148,8 @@ PostObject:
           type: string
         parentCid:
           type: number
-          description: The category identifier for the category that is the immediate
+          description:
+            The category identifier for the category that is the immediate
             ancestor of the current category
         bgColor:
           type: string
@@ -159,6 +164,9 @@ PostObject:
       type: boolean
     replies:
       type: number
+    anonymous:
+      type: number
+      description: Whether this post was made anonymously (0 for false, 1 for true)
 PostDataObject:
   description: The output as returned from `Posts.getPostsData`
   allOf:
@@ -220,7 +228,8 @@ PostDataObject:
               description: This is either username or fullname depending on forum and user settings
             userslug:
               type: string
-              description: An URL-safe variant of the username (i.e. lower-cased, spaces
+              description:
+                An URL-safe variant of the username (i.e. lower-cased, spaces
                 removed, etc.)
             reputation:
               type: number
@@ -257,12 +266,14 @@ PostDataObject:
               nullable: true
             icon:text:
               type: string
-              description: A single-letter representation of a username. This is used in the
+              description:
+                A single-letter representation of a username. This is used in the
                 auto-generated icon given to users without
                 an avatar
             icon:bgColor:
               type: string
-              description: A six-character hexadecimal colour code assigned to the user. This
+              description:
+                A six-character hexadecimal colour code assigned to the user. This
                 value is used in conjunction with
                 `icon:text` for the user's auto-generated
                 icon
@@ -306,6 +317,9 @@ PostDataObject:
           type: boolean
         downvoted:
           type: boolean
+        anonymous:
+          type: number
+          description: Whether this post was made anonymously (0 for false, 1 for true)
         attachments:
           type: array
         replies:
@@ -323,7 +337,8 @@ PostDataObject:
                     description: A friendly name for a given user account
                   userslug:
                     type: string
-                    description: An URL-safe variant of the username (i.e. lower-cased, spaces
+                    description:
+                      An URL-safe variant of the username (i.e. lower-cased, spaces
                       removed, etc.)
                   picture:
                     type: string
@@ -332,12 +347,14 @@ PostDataObject:
                     description: A user identifier
                   icon:text:
                     type: string
-                    description: A single-letter representation of a username. This is used in the
+                    description:
+                      A single-letter representation of a username. This is used in the
                       auto-generated icon given to users without
                       an avatar
                   icon:bgColor:
                     type: string
-                    description: A six-character hexadecimal colour code assigned to the user. This
+                    description:
+                      A six-character hexadecimal colour code assigned to the user. This
                       value is used in conjunction with
                       `icon:text` for the user's auto-generated
                       icon

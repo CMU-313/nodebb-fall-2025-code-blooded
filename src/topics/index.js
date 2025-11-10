@@ -94,13 +94,29 @@ Topics.getTopicsByTids = async function (tids, options) {
 			return data;
 		}
 
-		const [teasers, users, userSettings, categoriesData, guestHandles, thumbs] = await Promise.all([
+		async function loadMainPostAnonymous() {
+			const mainPids = topics.map(t => t && t.mainPid).filter(Boolean);
+			if (!mainPids.length) {
+				return [];
+			}
+			const postData = await posts.getPostsFields(mainPids, ['pid', 'anonymous']);
+			const pidToAnonymous = {};
+			postData.forEach((post) => {
+				if (post) {
+					pidToAnonymous[post.pid] = post.anonymous;
+				}
+			});
+			return topics.map(t => t && t.mainPid ? pidToAnonymous[t.mainPid] : false);
+		}
+
+		const [teasers, users, userSettings, categoriesData, guestHandles, thumbs, mainPostAnonymous] = await Promise.all([
 			Topics.getTeasers(topics, options),
 			user.getUsersFields(uids, ['uid', 'username', 'fullname', 'userslug', 'reputation', 'postcount', 'picture', 'signature', 'banned', 'status']),
 			loadShowfullnameSettings(),
 			categories.getCategoriesFields(cids, ['cid', 'name', 'slug', 'icon', 'backgroundImage', 'imageClass', 'bgColor', 'color', 'disabled']),
 			loadGuestHandles(),
 			Topics.thumbs.load(topics),
+			loadMainPostAnonymous(),
 		]);
 
 		users.forEach((userObj, idx) => {
@@ -117,6 +133,7 @@ Topics.getTopicsByTids = async function (tids, options) {
 			categoriesMap: _.zipObject(cids, categoriesData),
 			tidToGuestHandle: _.zipObject(guestTopics.map(t => t.tid), guestHandles),
 			thumbs,
+			mainPostAnonymous,
 		};
 	}
 
@@ -133,11 +150,32 @@ Topics.getTopicsByTids = async function (tids, options) {
 		if (topic) {
 			topic.thumbs = result.thumbs[i];
 			topic.category = result.categoriesMap[topic.cid];
-			topic.user = topic.uid ? result.usersMap[topic.uid] : { ...result.usersMap[topic.uid] };
-			if (result.tidToGuestHandle[topic.tid]) {
-				topic.user.username = validator.escape(result.tidToGuestHandle[topic.tid]);
-				topic.user.displayname = topic.user.username;
+
+			// Handle anonymous main posts
+			if (result.mainPostAnonymous[i]) {
+				topic.user = {
+					uid: 0,
+					username: 'Anonymous',
+					userslug: '',
+					picture: '',
+					'icon:text': '?',
+					'icon:bgColor': '#aaa',
+					reputation: 0,
+					postcount: 0,
+					signature: '',
+					banned: 0,
+					status: 'offline',
+					fullname: undefined,
+					displayname: 'Anonymous',
+				};
+			} else {
+				topic.user = topic.uid ? result.usersMap[topic.uid] : { ...result.usersMap[topic.uid] };
+				if (result.tidToGuestHandle[topic.tid]) {
+					topic.user.username = validator.escape(result.tidToGuestHandle[topic.tid]);
+					topic.user.displayname = topic.user.username;
+				}
 			}
+
 			topic.teaser = result.teasers[i] || null;
 			topic.isOwner = topic.uid === parseInt(uid, 10);
 			topic.ignored = followData[i].ignoring;
