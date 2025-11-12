@@ -10,6 +10,9 @@ services:
       - nodebb-uploads:/usr/src/app/public/uploads
       - nodebb-config:/opt/config
       - ./install/docker/setup.json:/usr/src/app/setup.json
+    networks:
+      - default
+      - llm-network
 
   mongo:
     image: 'mongo:7-jammy'
@@ -87,3 +90,8 @@ volumes:
       o: bind
       type: none
       device: ./.docker/config
+
+networks:
+  llm-network:
+    external: true
+    name: llm-experiment-microservice-code-blooded_default
