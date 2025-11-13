@@ -29,8 +29,8 @@
     },
     "dependencies": {
         "@adactive/bootstrap-tagsinput": "0.8.2",
-        "@fontsource/inter": "5.2.8",
-        "@fontsource/poppins": "5.2.7",
+        "@fontsource/inter": "5.2.5",
+        "@fontsource/poppins": "5.2.6",
         "@fortawesome/fontawesome-free": "6.7.2",
         "@isaacs/ttlcache": "1.4.1",
         "@nodebb/spider-detector": "2.0.3",
@@ -173,8 +173,8 @@
         "mocha-lcov-reporter": "1.3.0",
         "mockdate": "3.0.5",
         "nyc": "17.1.0",
-        "smtp-server": "3.13.6",
-        "retire": "^5.3.0"
+        "retire": "^5.3.0",
+        "smtp-server": "3.13.6"
     },
     "optionalDependencies": {
         "sass-embedded": "1.88.0"

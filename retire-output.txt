@@ -1,0 +1,110 @@
+Retire.js Version Check:
+5.3.0
+
+Installation Verification:
+nodebb@4.4.6 /Users/orangexxx/Desktop/17313/nodebb-fall-2025-code-blooded
+└── retire@5.3.0
+
+
+Example Output of Retire.js:
+retire.js v5.3.0
+Loading from cache: https://raw.githubusercontent.com/RetireJS/retire.js/master/repository/jsrepository-v4.json
+Reading /var/folders/sy/gr6dgvhd5kb7dqg1jyy5yycr0000gn/T/.retire-cache/1761266231205.json ...
+/Users/orangexxx/Desktop/17313/nodebb-fall-2025-code-blooded/node_modules/clipboard/bower.json
+ ↳ clipboard 2.0.11
+/Users/orangexxx/Desktop/17313/nodebb-fall-2025-code-blooded/node_modules/express-useragent/bower.json
+ ↳ express-useragent 1.0.14
+/Users/orangexxx/Desktop/17313/nodebb-fall-2025-code-blooded/node_modules/good-listener/bower.json
+ ↳ good-listener 1.2.1
+/Users/orangexxx/Desktop/17313/nodebb-fall-2025-code-blooded/node_modules/highlightjs-line-numbers.js/bower.json
+ ↳ highlightjs-line-numbers.js 2.9.0
+/Users/orangexxx/Desktop/17313/nodebb-fall-2025-code-blooded/node_modules/jquery-serializeobject/bower.json
+ ↳ jquery-serializeObject 1.0.0
+/Users/orangexxx/Desktop/17313/nodebb-fall-2025-code-blooded/node_modules/jquery-ui/bower.json
+ ↳ jquery-ui 1.14.1
+/Users/orangexxx/Desktop/17313/nodebb-fall-2025-code-blooded/node_modules/markdown-it-checkbox/bower.json
+ ↳ markdown-it-checkbox 1.1.0
+/Users/orangexxx/Desktop/17313/nodebb-fall-2025-code-blooded/node_modules/nprogress/bower.json
+ ↳ nprogress 0.2.0
+/Users/orangexxx/Desktop/17313/nodebb-fall-2025-code-blooded/node_modules/lodash/lodash.js
+ ↳ lodash 4.17.21
+/Users/orangexxx/Desktop/17313/nodebb-fall-2025-code-blooded/node_modules/lodash/lodash.min.js
+ ↳ lodash 4.17.21
+/Users/orangexxx/Desktop/17313/nodebb-fall-2025-code-blooded/node_modules/select/bower.json
+ ↳ select 1.1.0
+/Users/orangexxx/Desktop/17313/nodebb-fall-2025-code-blooded/node_modules/sprintf-js/bower.json
+ ↳ sprintf 1.0.3
+/Users/orangexxx/Desktop/17313/nodebb-fall-2025-code-blooded/node_modules/underscore/underscore-esm-min.js
+ ↳ underscore.js 1.13.7
+/Users/orangexxx/Desktop/17313/nodebb-fall-2025-code-blooded/node_modules/underscore/underscore-esm.js
+ ↳ underscore.js 1.13.7
+/Users/orangexxx/Desktop/17313/nodebb-fall-2025-code-blooded/node_modules/underscore/underscore-min.js
+ ↳ underscore.js 1.13.7
+/Users/orangexxx/Desktop/17313/nodebb-fall-2025-code-blooded/node_modules/underscore/underscore-umd-min.js
+ ↳ underscore.js 1.13.7
+/Users/orangexxx/Desktop/17313/nodebb-fall-2025-code-blooded/node_modules/underscore/underscore-umd.js
+ ↳ underscore.js 1.13.7
+/Users/orangexxx/Desktop/17313/nodebb-fall-2025-code-blooded/node_modules/underscore/underscore.js
+ ↳ underscore.js 1.13.7
+/Users/orangexxx/Desktop/17313/nodebb-fall-2025-code-blooded/node_modules/underscore.string/bower.json
+ ↳ underscore.string 3.3.6
+/Users/orangexxx/Desktop/17313/nodebb-fall-2025-code-blooded/node_modules/@adactive/bootstrap-tagsinput/bower.json
+ ↳ bootstrap-tagsinput 0.5.0
+/Users/orangexxx/Desktop/17313/nodebb-fall-2025-code-blooded/node_modules/chart.js/dist/chart.js
+ ↳ chart.js 4.4.9
+/Users/orangexxx/Desktop/17313/nodebb-fall-2025-code-blooded/node_modules/chart.js/dist/chart.umd.js
+ ↳ chart.js 4.4.9
+/Users/orangexxx/Desktop/17313/nodebb-fall-2025-code-blooded/node_modules/chart.js/dist/helpers.js
+ ↳ chart.js 4.4.9
+/Users/orangexxx/Desktop/17313/nodebb-fall-2025-code-blooded/node_modules/jquery/dist/jquery.js
+ ↳ jquery 3.7.1
+/Users/orangexxx/Desktop/17313/nodebb-fall-2025-code-blooded/node_modules/jquery/dist/jquery.min.js
+ ↳ jquery 3.7.1
+/Users/orangexxx/Desktop/17313/nodebb-fall-2025-code-blooded/node_modules/jquery/dist/jquery.slim.js
+ ↳ jquery 3.7.1
+/Users/orangexxx/Desktop/17313/nodebb-fall-2025-code-blooded/node_modules/jquery/dist/jquery.slim.min.js
+ ↳ jquery 3.7.1
+/Users/orangexxx/Desktop/17313/nodebb-fall-2025-code-blooded/node_modules/jquery-ui/dist/jquery-ui.min.js
+ ↳ jquery-ui 1.14.1
+/Users/orangexxx/Desktop/17313/nodebb-fall-2025-code-blooded/node_modules/jquery-ui/dist/jquery-ui.js
+ ↳ jquery-ui 1.14.1
+/Users/orangexxx/Desktop/17313/nodebb-fall-2025-code-blooded/node_modules/jquery-ui/dist/jquery-ui.js
+ ↳ jquery-ui-dialog 1.14.1
+/Users/orangexxx/Desktop/17313/nodebb-fall-2025-code-blooded/node_modules/jquery-ui/dist/jquery-ui.js
+ ↳ jquery-ui-autocomplete 1.14.1
+/Users/orangexxx/Desktop/17313/nodebb-fall-2025-code-blooded/node_modules/jquery-ui/dist/jquery-ui.js
+ ↳ jquery-ui-tooltip 1.14.1
+/Users/orangexxx/Desktop/17313/nodebb-fall-2025-code-blooded/node_modules/markdown-it/dist/markdown-it.min.js
+ ↳ markdown-it 14.1.0
+/Users/orangexxx/Desktop/17313/nodebb-fall-2025-code-blooded/node_modules/markdown-it/dist/markdown-it.js
+ ↳ markdown-it 14.1.0
+/Users/orangexxx/Desktop/17313/nodebb-fall-2025-code-blooded/node_modules/underscore/modules/index.js
+ ↳ underscore.js 1.13.7
+/Users/orangexxx/Desktop/17313/nodebb-fall-2025-code-blooded/node_modules/bootstrap/dist/js/bootstrap.bundle.js
+ ↳ bootstrap 5.3.6
+/Users/orangexxx/Desktop/17313/nodebb-fall-2025-code-blooded/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js
+ ↳ bootstrap 5.3.6
+/Users/orangexxx/Desktop/17313/nodebb-fall-2025-code-blooded/node_modules/bootstrap/dist/js/bootstrap.esm.js
+ ↳ bootstrap 5.3.6
+/Users/orangexxx/Desktop/17313/nodebb-fall-2025-code-blooded/node_modules/bootstrap/dist/js/bootstrap.esm.min.js
+ ↳ bootstrap 5.3.6
+/Users/orangexxx/Desktop/17313/nodebb-fall-2025-code-blooded/node_modules/bootstrap/dist/js/bootstrap.js
+ ↳ bootstrap 5.3.6
+/Users/orangexxx/Desktop/17313/nodebb-fall-2025-code-blooded/node_modules/bootstrap/dist/js/bootstrap.min.js
+ ↳ bootstrap 5.3.6
+/Users/orangexxx/Desktop/17313/nodebb-fall-2025-code-blooded/node_modules/chart.js/dist/chunks/helpers.dataset.js
+ ↳ chart.js 4.4.9
+/Users/orangexxx/Desktop/17313/nodebb-fall-2025-code-blooded/node_modules/jquery-ui/ui/widgets/autocomplete.js
+ ↳ jquery-ui-autocomplete 1.14.1
+/Users/orangexxx/Desktop/17313/nodebb-fall-2025-code-blooded/node_modules/jquery-ui/ui/widgets/dialog.js
+ ↳ jquery-ui-dialog 1.14.1
+/Users/orangexxx/Desktop/17313/nodebb-fall-2025-code-blooded/node_modules/jquery-ui/ui/widgets/tooltip.js
+ ↳ jquery-ui-tooltip 1.14.1
+/Users/orangexxx/Desktop/17313/nodebb-fall-2025-code-blooded/node_modules/nodebb-plugin-emoji/build/acp/admin.js
+ ↳ svelte 4.2.19
+/Users/orangexxx/Desktop/17313/nodebb-fall-2025-code-blooded/node_modules/istanbul-reports/lib/html-spa/assets/bundle.js
+ ↳ react 16.14.0
+/Users/orangexxx/Desktop/17313/nodebb-fall-2025-code-blooded/node_modules/istanbul-reports/lib/html-spa/assets/bundle.js
+ ↳ react-dom 16.14.0
+/Users/orangexxx/Desktop/17313/nodebb-fall-2025-code-blooded/node_modules/istanbul-reports/lib/html-spa/assets/bundle.js
+ ↳ scheduler 0.19.1
